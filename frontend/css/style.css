@@ -1,0 +1,215 @@
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  /* 2. Remove default margin */
+  * {
+    margin: 0;
+  }
+  
+  body {
+    /* 3. Add accessible line-height */
+    line-height: 1.5;
+    /* 4. Improve text rendering */
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  /* 5. Improve media defaults */
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  
+  /* 6. Inherit fonts for form controls */
+  input, button, textarea, select {
+    font: inherit;
+  }
+  
+  /* 7. Avoid text overflows */
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  
+  /* 8. Improve line wrapping */
+  p {
+    text-wrap: pretty;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+  }
+  
+  /* 9. Create a root stacking context */
+  #root, #__next {
+    isolation: isolate;
+  }
+  
+  .dropdown-toggle {
+    border-top-left-radius: 8px !important;
+    border-bottom-left-radius: 8px !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+  
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  /* Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+  
+  .tab-content, .tab-pane {
+    border: none !important;
+    box-shadow: none !important;
+  }
+  
+  .player-form-container {
+     max-width: 900px; /* Adjust as needed */
+     margin: 0 auto;   /* Center the form */
+   }
+   
+/* Base dark mode theme */
+.dark-mode {
+  background-color: #1a1a1a; /* softer dark */
+  color: #e2e2e2;
+}
+
+/* Components in dark mode */
+.dark-mode body,
+.dark-mode .navbar,
+.dark-mode .offcanvas,
+.dark-mode .tab-content,
+.dark-mode .tab-pane,
+.dark-mode footer {
+  background-color: #1a1a1a;
+  color: #e2e2e2;
+}
+
+/* Navbar */
+.dark-mode .navbar {
+  background-color: #242424 !important;
+  color: #e2e2e2 !important;
+  border-bottom: 1px solid #333;
+}
+
+.dark-mode .navbar .navbar-brand,
+.dark-mode .navbar .nav-link,
+.dark-mode .navbar .form-check-label,
+.dark-mode .navbar svg {
+  color: #e2e2e2 !important;
+}
+
+/* Dropdowns, buttons */
+.dark-mode .dropdown-menu {
+  background-color: #2a2a2a;
+  color: #f1f1f1;
+}
+
+.dark-mode .dropdown-item:hover {
+  background-color: #3a3a3a;
+}
+
+/* Buttons */
+.dark-mode .btn {
+  background-color: #2d2d2d;
+  color: #f1f1f1;
+  border: 1px solid #444;
+}
+
+.dark-mode .btn:hover {
+  background-color: #3c3c3c;
+}
+
+/* Form Controls */
+.dark-mode input,
+.dark-mode select,
+.dark-mode textarea {
+  background-color: #252525;
+  color: #e2e2e2;
+  border: 1px solid #444;
+}
+
+.dark-mode input::placeholder {
+  color: #999;
+}
+
+.dark-mode input:disabled {
+  background-color: #333;
+  color: #777;
+  border-color: #444;
+}
+
+/* Player card layout */
+.player-cards .player-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  background-color: #222;
+  border: 1px solid #333;
+  border-radius: 0.5rem;
+}
+
+.player-card-info {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.player-card-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: #aaa;
+}
+
+.player-card-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+  
+  /* Alerts canvas empty state */
+  .dark-mode #alerts-body p {
+    color: #ccc;
+  }
+
+  #themeIcon svg {
+    transition: all 0.3s ease;
+  }
+
+  .toast-container {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 1055;
+  }
+
+  .player-cards .card {
+    background-color: #f8f9fa;
+    border-left: 4px solid #dee2e6;
+  }
+  .text-success {
+    color: #28a745 !important;
+  }
+
+  .highlight-match {
+    color: #1c1c1c !important;
+    background-color: #bfff00;
+    padding: 2px 4px;
+    border-radius: 4px;
+  }
+  
+  
+
+  
+  
+  

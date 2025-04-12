@@ -1,0 +1,89 @@
+<div class="container p-4 player-form-container">
+    <h2>Create New Player</h2>
+    <form id="playerForm">
+      <div class="row">
+        <!-- PERSONAL INFO -->
+        <div class="col-md-6">
+          <input class="form-control mb-3" type="text" name="first_name" placeholder="First Name" required>
+          <input class="form-control mb-3" type="text" name="last_name" placeholder="Last Name" required>
+
+          <div class="mb-3">
+            <label class="form-label">Gender</label><br>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="gender" value="male" id="genderMale">
+              <label class="form-check-label" for="genderMale">Male</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="gender" value="female" id="genderFemale">
+              <label class="form-check-label" for="genderFemale">Female</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="gender" value="other" id="genderOther">
+              <label class="form-check-label" for="genderOther">Other</label>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Birth Date</label>
+            <input class="form-control" type="date" name="birth_date">
+          </div>
+        </div>
+
+        <!-- CONTACT INFO -->
+        <div class="col-md-6">
+          <input class="form-control mb-3" type="text" name="nick_name" placeholder="Nickname (Optional)">
+          <input class="form-control mb-3" type="email" name="email" placeholder="Email" required>
+
+          <div class="input-group mb-3">
+            <select class="form-select" name="phone_country_code" id="phoneCode">
+              <option value="+1">🇺🇸 +1 (USA)</option>
+              <option value="+44">🇬🇧 +44 (UK)</option>
+              <option value="+61">🇦🇺 +61 (Australia)</option>
+              <option value="+971">🇦🇪 +971 (Dubai / UAE)</option>
+              <option value="+63">🇵🇭 +63 (Philippines)</option>
+            </select>
+            <input class="form-control" type="text" name="phone" placeholder="Phone number" pattern="[0-9]{7,15}" inputmode="numeric">
+          </div>
+
+          <input class="form-control mb-3" type="text" name="rfid_uid_tag" placeholder="Scan or enter RFID tag" disabled>
+          <input class="form-control mb-3" type="file" accept="image/*" disabled>
+        </div>
+      </div>
+
+      <!-- LEAGUE INFO -->
+      <div class="row">
+        <div class="col-md-6">
+          <select class="form-select mb-3" name="league_country">
+            <option value="">League Country</option>
+            <option value="US">United States</option>
+            <option value="GB">United Kingdom</option>
+            <option value="AU">Australia</option>
+            <option value="PH">Philippines</option>
+            <option value="AE">Dubai / United Arab Emirates</option>
+          </select>
+
+          <input class="form-control mb-3" type="text" name="league_city" placeholder="League City">
+          <input class="form-control mb-3" type="text" name="league_district" placeholder="League District">
+          <input class="form-control mb-3" type="text" name="league_other" placeholder="Other League Info">
+        </div>
+
+        <!-- NOTES -->
+        <div class="col-md-6">
+          <textarea class="form-control mb-3" name="notes" placeholder="Additional Notes" style="height: 200px;"></textarea>
+        </div>
+      </div>
+
+      <div class="w-100 d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary" style="width: 100px;">Submit</button>
+      </div>
+    </form>
+</div>
+
+  <!-- Toast -->
+<div class="toast-container">
+    <div id="toast" class="toast align-items-center text-white bg-success border-0" role="alert">
+        <div class="d-flex">
+            <div class="toast-body" id="toastMessage"></div>
+        </div>
+    </div>
+</div>
