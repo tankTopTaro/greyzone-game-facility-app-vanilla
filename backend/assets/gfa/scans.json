@@ -1,0 +1,11 @@
+{
+  "localhost": {
+    "booth": [
+      "F1-1",
+      "F1-2"
+    ],
+    "game-room": [],
+    "status": "waiting",
+    "boothConfirmed": false
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "players": {
+    "F1-1": {
+      "id": "F1-1",
+      "nick_name": "Shadow",
+      "date_add": "2025-02-14",
+      "last_name": "Smith",
+      "first_name": "John",
+      "gender": "Male",
+      "birth_date": "1995-08-21T00:00:00.000Z",
+      "league": {
+        "country": "USA",
+        "city": "New York",
+        "district": "Manhattan",
+        "other": "University League"
+      },
+      "games_history": {},
+      "facility_session": {
+        "date_start": "2025-04-13T05:35:48.193Z",
+        "duration_m": "15",
+        "date_end": "2025-04-13T05:50:48.193Z"
+      },
+      "events_to_debrief": []
+    },
+    "F1-2": {
+      "id": "F1-2",
+      "nick_name": "Blaze",
+      "date_add": "2025-02-14",
+      "last_name": "Johnson",
+      "first_name": "Emily",
+      "gender": "Female",
+      "birth_date": "1998-05-15T00:00:00.000Z",
+      "league": {
+        "country": "USA",
+        "city": "New York",
+        "district": "Manhattan",
+        "other": "University League"
+      },
+      "games_history": {},
+      "facility_session": {
+        "date_start": "2025-04-13T05:38:13.814Z",
+        "duration_m": "15",
+        "date_end": "2025-04-13T05:53:13.814Z"
+      },
+      "events_to_debrief": []
+    }
+  }
+}

@@ -4,7 +4,7 @@ import dotenv from 'dotenv'
 import { fileURLToPath } from 'url'
 import { WebSocketServer } from 'ws'
 import { EventEmitter } from "events"
-import { readDatabase, writeDatabase } from '../utils/dbHelpers.js'
+import { getPlayersWithActiveSession, getPlayersWithRecentSession, readDatabase, writeDatabase } from '../utils/dbHelpers.js'
 import { Mutex } from 'async-mutex'
 
 const mutex = new Mutex()
@@ -42,7 +42,7 @@ export default class Socket extends EventEmitter {
          client.userAgent = request.headers['user-agent']
 
          // Expect the first message to contain the hostname
-         client.once('message', (message) => {
+         client.once('message', async (message) => {
             try {
                const data = JSON.parse(message.toString())
                console.log('Socket for '+data.clientname+' received message from client:', data.message)
@@ -66,6 +66,14 @@ export default class Socket extends EventEmitter {
                   
                   this.sendStoredStates(client, 'toggleRoom', GRA_STATUS_PATH)
                   this.sendStoredStates(client, 'status_update', SCANS_PATH)
+                  const newPlayerSessions = await getPlayersWithActiveSession()
+                  const recentPlayerSessions = await getPlayersWithRecentSession()
+         
+                  this.broadcastMessage('monitor', {
+                     type: 'facility_session',
+                     active_players: newPlayerSessions,
+                     recent_players: recentPlayerSessions
+                  })
 
                   // Handle messages from this client
                   client.on('message', (message) => {

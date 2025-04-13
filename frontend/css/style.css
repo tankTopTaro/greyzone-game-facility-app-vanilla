@@ -1,174 +1,182 @@
-/* 1. Use a more-intuitive box-sizing model */
+/* CSS Reset & Base Styling */
 *, *::before, *::after {
-    box-sizing: border-box;
-  }
-  
-  /* 2. Remove default margin */
-  * {
-    margin: 0;
-  }
-  
-  body {
-    /* 3. Add accessible line-height */
-    line-height: 1.5;
-    /* 4. Improve text rendering */
-    -webkit-font-smoothing: antialiased;
-  }
-  
-  /* 5. Improve media defaults */
-  img, picture, video, canvas, svg {
-    display: block;
-    max-width: 100%;
-  }
-  
-  /* 6. Inherit fonts for form controls */
-  input, button, textarea, select {
-    font: inherit;
-  }
-  
-  /* 7. Avoid text overflows */
-  p, h1, h2, h3, h4, h5, h6 {
-    overflow-wrap: break-word;
-  }
-  
-  /* 8. Improve line wrapping */
-  p {
-    text-wrap: pretty;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    text-wrap: balance;
-  }
-  
-  /* 9. Create a root stacking context */
-  #root, #__next {
-    isolation: isolate;
-  }
-  
-  .dropdown-toggle {
-    border-top-left-radius: 8px !important;
-    border-bottom-left-radius: 8px !important;
-    border-top-right-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
-  }
-  
-  /* Chrome, Safari, Edge, Opera */
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-  
-  /* Firefox */
-  input[type=number] {
-    -moz-appearance: textfield;
-  }
-  
-  .tab-content, .tab-pane {
-    border: none !important;
-    box-shadow: none !important;
-  }
-  
-  .player-form-container {
-     max-width: 900px; /* Adjust as needed */
-     margin: 0 auto;   /* Center the form */
-   }
-   
-/* Base dark mode theme */
-.dark-mode {
-  background-color: #1a1a1a; /* softer dark */
-  color: #e2e2e2;
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+input, button, textarea, select {
+  font: inherit;
+}
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+p {
+  text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+#root, #__next {
+  isolation: isolate;
 }
 
-/* Components in dark mode */
-.dark-mode body,
-.dark-mode .navbar,
-.dark-mode .offcanvas,
-.dark-mode .tab-content,
-.dark-mode .tab-pane,
-.dark-mode footer {
-  background-color: #1a1a1a;
-  color: #e2e2e2;
+/* Input Number Spinners - Remove */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Global Theme Variables */
+:root {
+  --text-color: #111;
+  --bg-color: #fff;
+  --navbar-bg: #f4f4f4;
+  --btn-bg: #e0e0e0;
+  --btn-hover-bg: #d0d0d0;
+  --btn-text: #111;
+  --border-color: #ccc;
+}
+
+.dark-mode {
+  --text-color: #e2e2e2;
+  --bg-color: #0f1a2a;
+  --navbar-bg: #1b2b45;
+  --btn-bg: #1f3b70;
+  --btn-hover-bg: #2d4f94;
+  --btn-text: #e2e2e2;
+  --border-color: #444;
+}
+
+/* Base Colors */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 /* Navbar */
-.dark-mode .navbar {
-  background-color: #242424 !important;
-  color: #e2e2e2 !important;
-  border-bottom: 1px solid #333;
+.navbar,
+.offcanvas,
+.tab-content,
+.tab-pane,
+footer {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+.navbar {
+  background-color: var(--navbar-bg);
+  color: var(--text-color);
 }
 
-.dark-mode .navbar .navbar-brand,
-.dark-mode .navbar .nav-link,
-.dark-mode .navbar .form-check-label,
-.dark-mode .navbar svg {
-  color: #e2e2e2 !important;
+.navbar .navbar-brand,
+.navbar .nav-link,
+.navbar .form-check-label,
+.navbar svg {
+  color: var(--text-color) !important;
 }
 
-/* Dropdowns, buttons */
-.dark-mode .dropdown-menu {
-  background-color: #2a2a2a;
-  color: #f1f1f1;
+/* Tab link base style (override Bootstrap) */
+.nav-pills .nav-link {
+  background-color: var(--btn-bg) !important;
+  color: var(--btn-text) !important;
+  border: 1px solid var(--border-color) !important;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.dark-mode .dropdown-item:hover {
-  background-color: #3a3a3a;
+/* Hover state */
+.nav-pills .nav-link:hover {
+  background-color: var(--btn-hover-bg) !important;
+  color: var(--btn-text) !important;
+}
+
+/* Active state */
+.nav-pills .nav-link.active {
+  background-color: var(--btn-hover-bg) !important;
+  color: var(--btn-text) !important;
+  font-weight: 600;
+}
+
+/* Dropdowns */
+.dropdown-menu {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+.dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.dropdown-toggle {
+  border-top-left-radius: 8px !important;
+  border-bottom-left-radius: 8px !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
 }
 
 /* Buttons */
-.dark-mode .btn {
-  background-color: #2d2d2d;
-  color: #f1f1f1;
-  border: 1px solid #444;
+.btn {
+  background-color: var(--btn-bg) !important;
+  color: var(--btn-text) !important;
+  border: 1px solid var(--border-color);
 }
-
-.dark-mode .btn:hover {
-  background-color: #3c3c3c;
+.btn:hover {
+  background-color: var(--btn-hover-bg) !important;
 }
 
 /* Form Controls */
-.dark-mode input,
-.dark-mode select,
-.dark-mode textarea {
-  background-color: #252525;
-  color: #e2e2e2;
-  border: 1px solid #444;
+input,
+select,
+textarea {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
 }
-
-.dark-mode input::placeholder {
-  color: #999;
+input::placeholder {
+  color: #888;
 }
-
+input:disabled {
+  background-color: #e0e0e0;
+  color: #777;
+  border-color: var(--border-color);
+}
 .dark-mode input:disabled {
   background-color: #333;
   color: #777;
-  border-color: #444;
 }
 
-/* Player card layout */
+/* Player Cards */
 .player-cards .player-card {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
   padding: 0.75rem 1rem;
   margin-bottom: 0.5rem;
-  background-color: #222;
-  border: 1px solid #333;
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
   border-radius: 0.5rem;
 }
-
 .player-card-info {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  color: var(--text-color);
 }
-
 .player-card-meta {
   display: flex;
   justify-content: space-between;
   font-size: 0.875rem;
-  color: #aaa;
+  color: #888;
 }
-
 .player-card-controls {
   display: flex;
   justify-content: flex-end;
@@ -176,40 +184,67 @@
   margin-top: 0.5rem;
 }
 
-  
-  /* Alerts canvas empty state */
-  .dark-mode #alerts-body p {
-    color: #ccc;
-  }
+/* Light mode text overrides */
+body:not(.dark-mode) .player-cards .player-card .player-card-info {
+  color: #111;
+}
+body:not(.dark-mode) .player-card-meta {
+  color: #666;
+}
 
-  #themeIcon svg {
-    transition: all 0.3s ease;
-  }
+/* Toasts */
+.toast-container {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1055;
+}
 
-  .toast-container {
-    position: fixed;
-    bottom: 1rem;
-    right: 1rem;
-    z-index: 1055;
-  }
+/* Alerts Canvas */
+.dark-mode #alerts-body p {
+  color: #ccc;
+}
 
-  .player-cards .card {
-    background-color: #f8f9fa;
-    border-left: 4px solid #dee2e6;
-  }
-  .text-success {
-    color: #28a745 !important;
-  }
+/* Theme icon transition */
+#themeIcon svg {
+  transition: all 0.3s ease;
+}
 
-  .highlight-match {
-    color: #1c1c1c !important;
-    background-color: #bfff00;
-    padding: 2px 4px;
-    border-radius: 4px;
-  }
-  
-  
+/* Match highlight */
+.highlight-match {
+  color: #1c1c1c !important;
+  background-color: #bfff00;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
 
-  
-  
-  
+/* Form Container */
+.player-form-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+#search-loader {
+  transition: opacity 0.3s ease;
+}
+
+#search-loader.d-none {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Dark mode dropdown styling */
+.dark-mode .dropdown-menu {
+  background-color: #1a2b44; /* Lighter than --bg-color for contrast */
+  color: #e2e2e2;
+  border: 1px solid var(--border-color);
+}
+
+.dark-mode .dropdown-item {
+  color: #e2e2e2;
+}
+
+.dark-mode .dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+

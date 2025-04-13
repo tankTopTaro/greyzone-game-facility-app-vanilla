@@ -108,7 +108,9 @@ const playersController = {
                console.error('Local DB fallback error:', error);
                return res.status(500).json({ error: 'Failed to query local database.' });
             }
-            
+         } else {
+            console.error('Unhandled CSA error:', error.message || error);
+            return res.status(500).json({ error: 'Unexpected CSA error' });
          }
       }
    },
