@@ -1,8 +1,8 @@
 {
-  "localhost": {
+  "gra-2.local": {
     "roomType": "basketball",
     "rules": [
-      1
+      "gameRuleOne"
     ]
   }
 }

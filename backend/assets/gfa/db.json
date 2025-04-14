@@ -14,35 +14,101 @@
         "district": "Manhattan",
         "other": "University League"
       },
-      "games_history": {},
+      "games_history": {
+        "basketball > gameRuleOne > L1": {
+          "best_time": 4,
+          "played": 4,
+          "played_today": 4
+        },
+        "basketball > gameRuleOne > L2": {
+          "best_time": 6,
+          "played": 2,
+          "played_today": 2
+        },
+        "basketball > gameRuleOne > L3": {
+          "best_time": 6,
+          "played": 1,
+          "played_today": 1
+        },
+        "basketball > gameRuleOne > L4": {
+          "best_time": 8,
+          "played": 1,
+          "played_today": 1
+        },
+        "basketball > gameRuleOne > L5": {
+          "best_time": 6,
+          "played": 1,
+          "played_today": 1
+        }
+      },
       "facility_session": {
-        "date_start": "2025-04-13T05:35:48.193Z",
-        "duration_m": "15",
-        "date_end": "2025-04-13T05:50:48.193Z"
+        "date_start": "2025-04-14T11:08:05.585Z",
+        "duration_m": 30,
+        "date_end": "2025-04-14T11:38:05.585Z"
       },
-      "events_to_debrief": []
-    },
-    "F1-2": {
-      "id": "F1-2",
-      "nick_name": "Blaze",
-      "date_add": "2025-02-14",
-      "last_name": "Johnson",
-      "first_name": "Emily",
-      "gender": "Female",
-      "birth_date": "1998-05-15T00:00:00.000Z",
-      "league": {
-        "country": "USA",
-        "city": "New York",
-        "district": "Manhattan",
-        "other": "University League"
-      },
-      "games_history": {},
-      "facility_session": {
-        "date_start": "2025-04-13T05:38:13.814Z",
-        "duration_m": "15",
-        "date_end": "2025-04-13T05:53:13.814Z"
-      },
-      "events_to_debrief": []
+      "events_to_debrief": [
+        {
+          "type": "start_next_level",
+          "caption": "Player advanced to level 1"
+        },
+        {
+          "type": "start_next_level",
+          "caption": "Player advanced to level 1"
+        },
+        {
+          "type": "new_player_record",
+          "caption": "New player record on basketball Level 2: 6 seconds instead of 12"
+        },
+        {
+          "type": "start_next_level",
+          "caption": "Player advanced to level 2"
+        },
+        {
+          "type": "start_next_level",
+          "caption": "Player advanced to level 3"
+        },
+        {
+          "type": "start_next_level",
+          "caption": "Player advanced to level 4"
+        },
+        {
+          "type": "time_is_up",
+          "caption": "Player ran out of time"
+        },
+        {
+          "type": "start_same_level",
+          "caption": "player replay level 1"
+        },
+        {
+          "type": "start_same_level",
+          "caption": "Player started replaying level 1"
+        },
+        {
+          "type": "time_is_up",
+          "caption": "Player ran out of time"
+        },
+        {
+          "type": "start_same_level",
+          "caption": "player replay level 1"
+        },
+        {
+          "type": "start_same_level",
+          "caption": "Player started replaying level 1"
+        },
+        {
+          "type": "time_is_up",
+          "caption": "Player ran out of time"
+        },
+        {
+          "type": "start_same_level",
+          "caption": "player replay level 1"
+        },
+        {
+          "type": "start_same_level",
+          "caption": "Player started replaying level 1"
+        }
+      ]
     }
-  }
+  },
+  "teams": {}
 }

@@ -25,7 +25,7 @@ const gameRoomController = {
       const release = await mutex.acquire()
       try {
          const { gra_id } = req.params
-         const { available, enabled, room, roomConfig } = req.body
+         const { available, enabled, room, rules } = req.body
    
          let status = readDatabase(GAME_ROOM_STATUS_PATH, {})
          let roomToGame = readDatabase(ROOM_TO_GAME_PATH, {})
@@ -41,7 +41,7 @@ const gameRoomController = {
          status[hostname].enabled = enabled
    
          roomToGame[gra_id].roomType = room
-         roomToGame[gra_id].rules = roomConfig.gameRules
+         roomToGame[gra_id].rules = rules
    
          if(status[hostname].online) facilityInstance.reportErrorToCentral.resolveError({message: `${hostname} is offline.`})
    
@@ -79,7 +79,7 @@ const gameRoomController = {
    isUpcomingGameSession: (req, res) => {
       const { gra_id } = req.params
 
-      const hostname = `${gra_id}`
+      const hostname = `${gra_id}.local`
 
       const upcomingSessions = readDatabase(WAITING_GAME_SESSION_PATH, {});
 
@@ -104,7 +104,7 @@ const gameRoomController = {
 
          const graStatus = readDatabase(GAME_ROOM_STATUS_PATH, {})
 
-         const hostname = `${gra_id}`
+         const hostname = `${gra_id}.local`
 
          graStatus[hostname].online = true
          graStatus[hostname].enabled = status

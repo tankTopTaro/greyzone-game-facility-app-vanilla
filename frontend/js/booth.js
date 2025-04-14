@@ -16,7 +16,7 @@ const confirmArea = document.getElementById('confirm-area');
 
 function startListeningToSocket() {
     function handleWebSocketMessage(data) {
-        console.log('Received webSocket message:', data)
+        // console.log('Received webSocket message:', data)
         const messageHandlers = {
             'rfid_scanned': async () => {
                 if (data.location === 'booth' && Number(data.id) === Number(boothId)) {

@@ -27,10 +27,24 @@ const rfidController = {
    gameRoom: async (req, res) => {
       const { gra_id } = req.params
       const { rfid_tag, player } = req.body
-      //const roomKey = `gra-${gra_id}`
-      //const hostname = `${roomKey}.local`
-      const roomKey = `localhost`
-      const hostname = `localhost`
+
+      let roomKey = null
+      let hostname = null
+
+      const allRoomStatuses = readDatabase(GAME_ROOM_STATUS_PATH, {})
+
+      // Iterate through game room statuses to find an available room
+      for (const key in allRoomStatuses) {
+         if (allRoomStatuses[key].isAvailable) {
+            roomKey = key.replace('.local', '') // Assuming room key is `gra-<id>`
+            hostname = key
+            break // Stop as soon as an available room is found
+         }
+      }
+
+      if (!roomKey) {
+         return { status: 'error', message: 'No available game room found.' }
+      }
 
       if (!rfid_tag) {
          return res.status(400).send('Missing RFID tag')
@@ -82,8 +96,22 @@ const rfidController = {
    booth: async (req, res) => {
       const { booth_id } = req.params
       const { rfid_tag, player } = req.body
-      // const roomKey = `gra-${booth_id}`
-      const roomKey = 'localhost'
+      
+      let roomKey = null
+
+      const allRoomStatuses = readDatabase(GAME_ROOM_STATUS_PATH, {})
+
+      // Iterate through game room statuses to find an available room
+      for (const key in allRoomStatuses) {
+         if (allRoomStatuses[key].isAvailable) {
+            roomKey = key.replace('.local', '') // Assuming room key is `gra-<id>`
+            break // Stop as soon as an available room is found
+         }
+      }
+
+      if (!roomKey) {
+         return { status: 'error', message: 'No available game room found.' }
+      }
 
       if (!rfid_tag) {
          return res.status(400).send('Missing RFID tag')
@@ -131,10 +159,23 @@ const processRfidScan = async (location, id) => {
    const release = await mutex.acquire()
 
    try {
-      // const roomKey = `gra-${id}`
-      //const hostname = `${roomKey}.local`
-      const hostname = 'localhost'
-      const roomKey = `localhost`
+      let roomKey = null
+      let hostname = null
+
+      const allRoomStatuses = readDatabase(GAME_ROOM_STATUS_PATH, {})
+
+      // Iterate through game room statuses to find an available room
+      for (const key in allRoomStatuses) {
+         if (allRoomStatuses[key].isAvailable) {
+            roomKey = key.replace('.local', '') // Assuming room key is `gra-<id>`
+            hostname = key
+            break // Stop as soon as an available room is found
+         }
+      }
+
+      if (!roomKey) {
+         return { status: 'error', message: 'No available game room found.' }
+      }
 
       const allScans = readDatabase(SCANS_PATH, {})
       const gameRoomStatus = readDatabase(GAME_ROOM_STATUS_PATH, {})
@@ -170,7 +211,7 @@ const processRfidScan = async (location, id) => {
                writeDatabase(SCANS_PATH, allScans)
 
                // Create Game Session Data
-               const gameSessionData = await createGameSession(roomData.booth, roomKey)
+               const gameSessionData = await createGameSession(roomData.booth, hostname)
                
                console.log(gameSessionData)
 

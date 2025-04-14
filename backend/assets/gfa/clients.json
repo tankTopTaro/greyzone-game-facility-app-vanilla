@@ -1,4 +1,8 @@
 {
-  "booths": [],
-  "game-room-door-screens": []
+  "booths": [
+    "booth-1"
+  ],
+  "game-room-door-screens": [
+    "game-room-2"
+  ]
 }
