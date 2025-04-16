@@ -1,14 +1,11 @@
-import path, { resolve } from 'path'
+import path from 'path'
 import { fileURLToPath } from 'url'
 import { readDatabase, writeDatabase } from '../utils/dbHelpers.js'
-import { Mutex } from 'async-mutex'
-
-const mutex = new Mutex()
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-const REPORTED_ERRORS_PATH = path.join(__dirname, '../assets/gfa/reported-errors.json')
+const REPORTED_ERRORS_PATH = path.join(__dirname, '../assets/db/gfa/reported-errors.json')
 
 export default class ReportErrorToCentral {
    constructor(socket) {
@@ -16,7 +13,6 @@ export default class ReportErrorToCentral {
    }
 
    async report (err, source = 'facility') {
-      const release = await mutex.acquire()
       try {
          let currentData = readDatabase(REPORTED_ERRORS_PATH, {})
 
@@ -66,13 +62,10 @@ export default class ReportErrorToCentral {
          // console.log('[ReportErrorToCentral] Error reported successfully.')
       } catch (err) {
          console.error('[ReportErrorToCentral] Failed to report error: ', err)
-      } finally {
-         release()
       }
    }
 
    async resolveError(err, source = 'facility') {
-      const release = await mutex.acquire()
       try {
          let currentData = readDatabase(REPORTED_ERRORS_PATH, {})
 
@@ -106,8 +99,6 @@ export default class ReportErrorToCentral {
          }
       } catch (err) {
          console.error('[ReportErrorToCentral] Failed to resolve error.')
-      } finally {
-         release()
       }
    }
 

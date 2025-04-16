@@ -5,17 +5,14 @@ import { fileURLToPath } from 'url'
 import { WebSocketServer } from 'ws'
 import { EventEmitter } from "events"
 import { getPlayersWithActiveSession, getPlayersWithRecentSession, readDatabase, writeDatabase } from '../utils/dbHelpers.js'
-import { Mutex } from 'async-mutex'
-
-const mutex = new Mutex()
 
 dotenv.config()
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-const GFA_CLIENTS_PATH = path.join(__dirname, '../assets/gfa/clients.json')
-const GRA_STATUS_PATH = path.join(__dirname, '../assets/gra/game-room-status.json')
-const SCANS_PATH = path.join(__dirname, '../assets/gfa/scans.json')
+const GFA_CLIENTS_PATH = path.join(__dirname, '../assets/db/gfa/clients.json')
+const GRA_STATUS_PATH = path.join(__dirname, '../assets/db/gra/game-room-status.json')
+const SCANS_PATH = path.join(__dirname, '../assets/db/gfa/scans.json')
 
 export default class Socket extends EventEmitter {
    constructor(port = 8081) {
@@ -45,7 +42,6 @@ export default class Socket extends EventEmitter {
          client.once('message', async (message) => {
             try {
                const data = JSON.parse(message.toString())
-               console.log('Socket for '+data.clientname+' received message from client:', data.message)
 
                if (data.clientname) {
                   const clientName = data.clientname
@@ -174,7 +170,6 @@ export default class Socket extends EventEmitter {
    }
 
    async updateClientData(clientname, isConnected = true) {
-      const release = await mutex.acquire()
       try {
          // Load memory cache if it's not already loaded
          if (!this.clients) {
@@ -214,8 +209,6 @@ export default class Socket extends EventEmitter {
          })
       } catch (error) {
          console.error('Error in updateClientData', error)
-      } finally {
-         release()
       }
    }
 }

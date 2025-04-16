@@ -1,4 +1,4 @@
 # Ignore node_modules and .env in backend
 /backend/node_modules/
 /backend/.env
-/backend/assets
+/backend/assets/db

@@ -7,7 +7,7 @@ dotenv.config()
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-const DB_PATH = path.join(__dirname, '../assets/gfa/db.json')
+const DB_PATH = path.join(__dirname, '../assets/db/gfa/db.json')
 
 export const readDatabase = (filePath, defaultValue = {}) => {
    try {
