@@ -14,6 +14,7 @@ const FacilityControls = ({ players, setPlayers, activePlayers, searchAttempted,
     useEffect(() => {
       if (query === '') {
          setSearchAttempted(false)
+         setPlayers([])
       }
     }, [query, setSearchAttempted, setPlayers])
  
