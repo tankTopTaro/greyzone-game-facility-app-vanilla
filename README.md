@@ -40,7 +40,7 @@ To set up the **Greyzone Game Room App** on your local environment:
    npm install
    ```
 
-2. **Build the Frontend**  
+2. **Build the Monitor Frontend**  
    - Build the frontend for production:
    ```bash 
    npm run build
