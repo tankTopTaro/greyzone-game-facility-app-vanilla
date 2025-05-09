@@ -1,0 +1,8 @@
+# Ignore node_modules and .env in backend
+/backend/node_modules
+/backend/.env
+/backend/public/assets/db
+/backend/tmp_uploads
+
+/frontend/dist
+/frontend/node_modules
